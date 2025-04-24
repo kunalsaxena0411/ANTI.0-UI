@@ -76,12 +76,6 @@ align-items: center; /* Center the content */
   object-fit: contain;
 }
 
-/* .sidebar li i {
-  font-size: 24px;
-  display: block;
-  margin-bottom: 10px;
-} */
-
 .sidebar li:hover {
   background-color: #2e2e2e;
   border-radius: 8px;
