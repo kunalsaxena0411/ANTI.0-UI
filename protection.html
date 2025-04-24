@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ANTI 0 - Protection</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- SIDEBAR from settings.html -->
+  <aside class="sidebar">
+    <nav>
+      <ul>
+        <li class="sidebar-item">
+          <a href="home.html">
+            <img src="home.png" alt="Home Icon" class="sidebar-icon" />
+            <span>HOME</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="protection.html">
+            <img src="protection.png" class="sidebar-icon protection-icon" alt="Protection" />
+            <span>PROTECTION</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="product.html">
+            <img src="product.png" alt="Product Icon" class="sidebar-icon" />
+            <span>PRODUCT</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="settings.html">
+            <img src="settings.png" alt="Settings Icon" class="sidebar-icon" />
+            <span>Settings</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="login.html">
+            <img src="sign out.png" alt="Sign Out Icon" class="sidebar-icon" />
+            <span>Sign Out</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- TOPBAR from settings.html -->
+    <header>
+      <div class="logo">
+        <img src="logo.png" alt="Logo" class="logo-img" />
+        <span class="logo-text">ANTI AI</span>
+      </div>
+      <button class="download-btn" id="downloadBtn">Download Extension</button>
+      <div class="header-icons">
+        <span class="bell-icon" id="bellIcon">
+          <img src="bell.png" class="bell-logo-img" alt="Notifications" />
+        </span>
+        <span class="man-icon" id="manIcon">
+          <img src="man.png" class="man-logo-img" alt="User Profile" />
+        </span>
+      </div>
+    </header>
+
+    <!-- ORIGINAL PROTECTION BODY -->
+    <h1 class="page-title">PROTECTION</h1>
+    <div class="secure-container">
+      <p class="subtext">Your AI Protection Status</p>
+      <p class="description">Scan your system and activate protection against unauthorized AI interference.</p>
+    </div>
+
+    <div class="terminate-container">
+      <button class="terminate-btn" id="terminateBtn">Terminate AI</button>
+    </div>
+
+    <section class="cards">
+      <div class="card"><i class="fas fa-bug"></i><p>Run Full Scan</p></div>
+      <div class="card"><i class="fas fa-shield-alt"></i><p>Real-time Protection</p></div>
+      <div class="card"><i class="fas fa-exclamation-triangle"></i><p>Threat Reports</p></div>
+    </section>
+
+  </main>
+</div>
+<script>
+document.getElementById("terminateBtn").addEventListener("click", function () {
+    const confirmTermination = confirm("Are you sure you want to terminate AI? This action cannot be undone.");
+    
+    if (confirmTermination) {
+      // Perform any action — example: show a message or redirect
+      alert("AI Terminated Successfully ⚠️");
+  
+      // Optionally redirect to another page
+      // window.location.href = "terminated.html"; // create this page if needed
+    } else {
+      alert("Termination Cancelled ✅");
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

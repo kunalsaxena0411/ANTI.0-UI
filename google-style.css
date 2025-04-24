@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #000; /* Changed to black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.google-login-container {
+  text-align: center;
+}
+
+.card {
+  background: #1c1c1c; /* Dark card background */
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+  max-width: 350px;
+  width: 90%;
+  color: #f1f1f1; /* Light text color */
+}
+
+.card h1 {
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.card p {
+  color: #cccccc;
+}
+
+.google-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: #fff;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #444;
+  transition: box-shadow 0.3s ease;
+}
+
+.google-btn img {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.google-btn:hover {
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+.disclaimer {
+  font-size: 12px;
+  margin-top: 20px;
+  color: #888;
+}
