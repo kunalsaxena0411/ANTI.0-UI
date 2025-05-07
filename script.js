@@ -1,56 +1,104 @@
-document.getElementById("downloadBtn").addEventListener("click", function() {
-    alert("Thanks for downloading the extension!");
-    // Optional: redirect
-    //window.location.href = "your-extension-link.zip";
-});
-
-// JavaScript to toggle sidebar visibility on mobile
-const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
-const sidebar = document.querySelector(".sidebar");
-
-sidebarToggleBtn.addEventListener("click", () => {
-  sidebar.classList.toggle("active");
-});
-
-//to close sidebar when clicked outside
-document.addEventListener("click", (e) => {
-  if (!sidebar.contains(e.target) && !sidebarToggleBtn.contains(e.target)) {
-    sidebar.classList.remove("active");
-  }
-});
-
-
-// Select all the sidebar list items
-const sidebarItems = document.querySelectorAll('.sidebar li');
-
-// Add event listener to each item to handle the click
-sidebarItems.forEach(item => {
-    item.addEventListener('click', (e) => {
-        // Optionally, you can handle other logic here, like logging, animations, etc.
-        const page = item.getAttribute('data-page');
-        if (page) {
-          window.location.href = page; // Navigate to the correct page
-        }
-
-        // Remove the 'active' class from all items
-        sidebarItems.forEach(i => i.classList.remove('active'));
-        
-        // Add the 'active' class to the clicked item
-        item.classList.add('active');
-    });
-});
-
-// Highlight active sidebar item based on the current page
+//sidebar toggle
 document.addEventListener('DOMContentLoaded', () => {
-    const currentPage = window.location.pathname.split('/').pop(); // Extract the page name
-    sidebarItems.forEach(item => {
-        const page = item.getAttribute('data-page');
-        if (page === currentPage) {
-            item.classList.add('active');
-        }
+  const body = document.querySelector("body");
+  const sidebar = body.querySelector(".sidebar");
+  const toggle = body.querySelector(".sidebar-toggle");
+
+  // Restore sidebar state from localStorage
+  const sidebarClosed = localStorage.getItem("sidebarClosed") === "true";
+  if (sidebarClosed) {
+    sidebar.classList.add("close");
+    sidebar.classList.remove("open");
+    toggle.classList.remove("close"); // hamburger
+  } else {
+    sidebar.classList.remove("close");
+    sidebar.classList.add("open");
+    toggle.classList.add("close"); // cross
+  }
+
+  // Handle sidebar toggle
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      const isClosed = sidebar.classList.contains("close");
+
+      if (isClosed) {
+        sidebar.classList.remove("close");
+        sidebar.classList.add("open");
+        toggle.classList.add("close"); // Show × when open
+      } else {
+        sidebar.classList.add("close");
+        sidebar.classList.remove("open");
+        toggle.classList.remove("close"); // Show ≡ when closed
+      }
+
+      // Save sidebar state to localStorage
+      localStorage.setItem("sidebarClosed", !isClosed);
+      
     });
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    const isClosed = localStorage.getItem("sidebarClosed") === "true";
+    if (isClosed) {
+      sidebar.classList.add("close");
+      toggle.classList.add("close");
+    }
+  });
+  // Sidebar item handling
+  const sidebarItems = document.querySelectorAll('.sidebar li');
+
+  sidebarItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      // Navigate to the target page
+      const page = item.getAttribute('data-page');
+      if (page) {
+        window.location.href = page;
+      }
+
+      // Update active and hovered states
+      sidebarItems.forEach(i => {
+        i.classList.remove('active');
+        i.classList.remove('hovered');
+      });
+      item.classList.add('active');
+      item.classList.add('hovered');
+    });
+  });
+
+  // Highlight the current page's item
+  const currentPage = window.location.pathname.split('/').pop();
+  sidebarItems.forEach(item => {
+    const page = item.getAttribute('data-page');
+    if (page === currentPage) {
+      item.classList.add('active');
+      item.classList.add('hovered');
+    }
+  });
+
+  // Remove hovered class when clicking outside the sidebar
+  document.addEventListener("click", (e) => {
+    if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {
+      sidebarItems.forEach(i => i.classList.remove('hovered'));
+    }
+  });
 });
 
+const isMobile = window.innerWidth <= 768;
+if (isMobile && !sidebar.classList.contains("open") && !sidebarClosed) {
+  sidebar.classList.add("open");
+  toggle.classList.add("close");
+}
+
+
+//extension button
+document.getElementById("downloadBtn").addEventListener("click", function() {
+  alert("Thanks for downloading the extension!");
+  // Optional: redirect
+  //window.location.href = "your-extension-link.zip";
+});
+
+//card clicked
 document.querySelectorAll('.card').forEach((card, index) => {
     card.addEventListener('click', () => {
       // Replace this with your actual action
@@ -59,17 +107,8 @@ document.querySelectorAll('.card').forEach((card, index) => {
       window.location.href = `page${index + 1}.html`;
     });
 });
-
-//card animation
-// Apply Vanilla Tilt to all cards
-// VanillaTilt.init(document.querySelectorAll(".card"), {
-//     max: 12,            // max tilt rotation (in degrees)
-//     speed: 400,         // speed of the enter/exit transition
-//     glare: true,        // adds a subtle glare
-//     "max-glare": 0.2,   // max glare opacity
-//   });
   
-// Select all card elements
+//card elements animations
 const cards = document.querySelectorAll(".card");
 
 cards.forEach((card) => {
@@ -96,6 +135,7 @@ cards.forEach((card) => {
   });
 });
 
+//product description
 document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.getElementById("toggleBtn");
   const description = document.getElementById("description");
@@ -131,4 +171,3 @@ document.addEventListener("DOMContentLoaded", function () {
     // You can redirect or open a profile menu
   });
 });
-

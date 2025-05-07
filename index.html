@@ -3,104 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anti 0</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <title>Connect with Anti-0</title>
+  <link rel="stylesheet" href="styless.css" />
+
+
 </head>
-
 <body>
+  <canvas id="bg"></canvas>
+
+  <div class="login-container">
+    <h1>ANTI-0</h1>
+    <h2>Welcome Back</h2>
+    <p class="subtitle">Enter your credentials to access Anti-0</p>
+
+    <form class="login-form" id="loginForm">
+      <input type="text" placeholder="Username" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit" class="sign-in-btn">Sign In</button>
+    </form>
+
+    <a href="#" class="forgot-link">Forgot password?</a>
+
+    <div class="divider">
+      <span>or</span>
+    </div>
+
+    <button class="google-btn" onclick="window.location.href='google-login.html'">
+      <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo" />
+      Sign in with Google
+    </button>
+
+    <p class="register-text">
+      New here? <a href="#" class="register-link">Register</a>
+    </p>
+  </div>
+
   
-  <div class="container">  
-  <!-- SIDEBAR from settings.html -->
-  <!-- Sidebar Toggle Button -->
-  <div id="sidebarToggleBtn" class="sidebar-toggle-btn">
-    <i class="fas fa-bars"></i> <!-- You can use FontAwesome for this icon -->
-  </div>
-  <aside class="sidebar">
-    <nav>
-      <ul>
-        <li class="sidebar-item">
-          <a href="index.html">
-            <img src="home.png" alt="Home Icon" class="sidebar-icon" />
-            <span>HOME</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a href="protection.html">
-            <img src="protection.png" class="sidebar-icon protection-icon" alt="Protection" />
-            <span>PROTECTION</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a href="product.html">
-            <img src="product.png" alt="Product Icon" class="sidebar-icon" />
-            <span>PRODUCT</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a href="settings.html">
-            <img src="settings.png" alt="Settings Icon" class="sidebar-icon" />
-            <span>SETTINGS</span>
-          </a>
-        </li>
-          <li class="sidebar-item">
-            <a href="login.html" style="text-align: center; text-decoration: none; color: inherit;">
-              <img src="sign out.png" alt="Sign Out Icon" class="sidebar-icon">
-              <span>SIGN OUT</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
-
-      <!-- TOPBAR from settings.html -->
-      <header>
-        <div class="logo">
-          <img src="logo.png" alt="Logo" class="logo-img" />
-          <span class="logo-text">ANTI AI</span>
-        </div>
-        <button class="download-btn" id="downloadBtn">Download Extension</button>
-        <div class="header-icons">
-          <span class="bell-icon" id="bellIcon">
-            <img src="bell.png" class="bell-logo-img" alt="Notifications" />
-          </span>
-          <span class="man-icon" id="manIcon">
-            <img src="man.png" class="man-logo-img" alt="User Profile" />
-          </span>
-        </div>
-      </header>
-
-      <!-- HOME PAGE CONTENT -->
-      <h1 class="page-title">YOU ARE SAFE</h1>
-      <div style="display: flex; justify-content: center;">
-        <div class="secure-container">
-          <p class="subtext">Get Secure With Us</p>
-          <p class="description">“Anti-0 is a tool that protects against the influence and risks of artificial intelligence...”</p>
-        </div>
-      </div>
-
-      <section class="cards">
-        <div class="card"><i class="fas fa-lock"></i><p>Block AI Tools</p></div>
-        <div class="card"><i class="fas fa-laptop"></i><p>System AI Scan</p></div>
-        <div class="card"><i class="fas fa-search"></i><p>Subscription</p></div>
-        <div class="card"><i class="fas fa-brain"></i><p>Secure AI Tools</p></div>
-        <div class="card"><i class="fas fa-id-badge"></i><p>Id Protection</p></div>
-        <div class="card"><i class="fas fa-bolt"></i><p>Add a quick action</p></div>
-      </section>
-
-      <footer>
-        <p>You can protect 2 more devices with your subscription. <a href="#">Install ANTI AI on a new device</a></p>
-      </footer>
-
-    </main>
-  </div>
-
-  <!-- JS Scripts -->
-
-<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
-<script src="script.js"></script>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      window.location.href = "home.html"; // Redirect after login
+    });
+  </script>
+  <script src="background.js"></script>
 </body>
 </html>
