@@ -780,27 +780,14 @@ footer a {
     width: 60px;
   }
   .nav-link{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex;               /* turn it into a flex container */
+  align-items: center;         /* vertical center (if your sidebar is tall) */
+  justify-content: center;     /* horizontal center */
   width: 100%;
   box-sizing: border-box;
   color: white;
   text-decoration: none;
   }
-  /* .sidebar.open {
-    left: 0;
-    width: 180px;
-  }
-  .sidebar.close {
-    width: 88px;
-  } */
-  /* .sidebar.open ~ .main-content {
-    margin-left: 180px; /* shift content if sidebar is open */
-  } */
-  /* .sidebar.close ~ .main-content {
-    margin-left: 88px; 
-  } */
   .menu-bar {
     padding-top: 10px;
   }
@@ -832,7 +819,7 @@ footer a {
   }
   .download-btn {
     margin-top: 5px;
-    padding: 0px 4px;
+    padding: 2px 4px;
   }
   .header-icons {
     margin-top: 10px;
