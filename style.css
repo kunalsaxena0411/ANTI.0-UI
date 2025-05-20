@@ -88,9 +88,6 @@
   }
 }
 
-
-
-
 body {
   margin: 0;
   padding: 0;
@@ -106,123 +103,57 @@ body {
     flex-direction: column; /* default for mobile */
 }
 
-/* === Sidebar ===*/
-.sidebar{
-  position:fixed;
-  top:80px;
-  left:0;
-  height:100%;
-  width: 180px;
+/* === Sidebar (Closed Only) === */
+.sidebar {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  height: 100%;
+  width: 80px; 
   padding: 40px 10px;
   background: var(--sidebar-color);
   transition: var(--tran-05);
   z-index: 1000;
+}
 
-  
-}
-.sidebar.close{
-  width: 88px;
-}
-.sidebar-closed .sidebar {
-  width: 88px;
-  transition: var(--tran-05);
-}
-.sidebar-closed .sidebar .text {
+/* Hide text permanently */
+.sidebar .text {
   opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
 }
-/* === Reusable CSS ===*/
-.sidebar text{
-  font-size: 14px;
-  font-weight: 500;
-  transition: var(--tran-04);
-  white-space:nowrap;
-  opacity: 1;
-}
-.sidebar.close .text{
-  opacity: 0;
-}
-.sidebar image{
+
+/* Optional: Adjust or hide image/text elements inside sidebar */
+.sidebar image {
   min-width: 60px;
   display: flex;
   align-items: center;
 }
-.sidebar li{
+
+/* Sidebar List Items */
+.sidebar li {
   height: 50px;
-  width: 165px;
+  width: 65px; 
   margin-top: 60px;
   list-style: none;
   display: flex;
   align-items: center;
 }
-.sidebar.close li{
-  width: 65px;
-}
-.sidebar li .icon{
+
+/* Icon inside List Items */
+.sidebar li .icon {
   font-size: 40px;
   min-width: 65px;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: var(--tran-06);
-}
-.sidebar li .icon,
-.sidebar li .text{
-  color:black;
+  color: black;
   transition: var(--tran-02);
 }
-.sidebar header .sidebar-toggle{
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  transform: translateY(-50%);
-  transition: transform 0.4s ease;
-  /* height:25px;
-  width:25px; */
-  /* background: var(--primary-color); */
-  display: flex;
-  align-items: center;
-  /* justify-content: center; */
-  border-radius: 50%;
-  color: var(--sidebar-color);
-  font-size: 22px;
-  flex-direction: column;
-  justify-content: space-around;
-  height:30px;
-  width:35px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1001;
-}
-.sidebar header .sidebar-toggle span {
-  width: 30px;
-  height: 4px;
-  background: black;
-  border-radius: 2px;
-  transition: all 0.4s ease;
-  transform-origin: center;
-}
-/* Animation when active */
-.sidebar header .sidebar-toggle.close span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
 
-.sidebar header .sidebar-toggle.close span:nth-child(2) {
-  opacity: 0;
-}
-
-.sidebar header .sidebar-toggle.close span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-.sidebar.close header .sidebar-toggle{
-  transform: translateY(-50%) rotate(180deg);
-}
-.sidebar header{
-  position: relative;
-}
-.sidebar li a{
+/* Links */
+.sidebar li a {
   text-decoration: none;
   height: 100%;
   width: 100%;
@@ -231,23 +162,27 @@ body {
   align-items: center;
   transition: var(--tran-04);
 }
-.sidebar li a:hover{
+.sidebar li a:hover {
   background: var(--primary-color);
 }
-.sidebar li a:hover .icon{
+.sidebar li a:hover .icon {
   font-size: 35px;
   color: var(--sidebar-color);
 }
-.sidebar li a:hover .text{  
-  color: var(--sidebar-color);
+
+/* Hide toggle button (if no toggling needed) */
+.sidebar header .sidebar-toggle {
+  display: none;
 }
+
+/* Optional: Remove any hover classes if not needed */
 .sidebar li.hovered a {
   background: var(--primary-color);
 }
-.sidebar li.hovered a .icon,
-.sidebar li.hovered a .text {
+.sidebar li.hovered a .icon {
   color: var(--sidebar-color);
 }
+
 menu-bar .mode{
   position: relative;
   background: var(--primary-color-light);
@@ -257,7 +192,7 @@ menu-bar .mode i{
 }
 
 .main-content {
-  margin-left: 150px;
+  margin-left: 80px;
   margin-top: 80px;
   padding: 30px;
   /* align-items: center; */
@@ -453,6 +388,7 @@ footer a {
   
 .terminate-btn {
   background-color: #ff4d4d;
+  margin-left: -50px;
   color: white;
   border: none;
   padding: 15px 30px;
@@ -832,23 +768,39 @@ footer a {
   
   .sidebar {
     width: 88px;
+    position: fixed;
+    height: 100vh;
+    overflow: auto;
+    z-index: 1000;
     display: block !important;
     transform: translateX(0) !important;
     left: 0 !important;
   }
-  .sidebar.open {
+  .menu{
+    width: 60px;
+  }
+  .nav-link{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  color: white;
+  text-decoration: none;
+  }
+  /* .sidebar.open {
     left: 0;
     width: 180px;
   }
   .sidebar.close {
     width: 88px;
-  }
-  .sidebar.open ~ .main-content {
+  } */
+  /* .sidebar.open ~ .main-content {
     margin-left: 180px; /* shift content if sidebar is open */
-  }
-  .sidebar.close ~ .main-content {
-    margin-left: 88px; /* Sidebar collapsed width */
-  }
+  } */
+  /* .sidebar.close ~ .main-content {
+    margin-left: 88px; 
+  } */
   .menu-bar {
     padding-top: 10px;
   }
@@ -880,7 +832,7 @@ footer a {
   }
   .download-btn {
     margin-top: 5px;
-    padding: 2px 4px;
+    padding: 0px 4px;
   }
   .header-icons {
     margin-top: 10px;
@@ -958,107 +910,4 @@ footer a {
     flex-direction: column;
     gap: 10px;
   }
-
 }
-/* Optional for very small devices */
-/* @media (max-width: 480px) {
-  .sidebar {
-    width: 160px;
-  }
-  
-  .sidebar li {
-    margin: 40px 0;
-  }
-
-  .main-content {
-    margin-top: 90px;
-    padding: 15px;
-  }
-
-  header {
-    padding: 0 15px;
-    height: 70px;
-  }
-
-  .download-btn {
-    font-size: 14px;
-    padding: 4px 8px;
-  }
-
-  .header-icons span {
-    font-size: 16px;
-    margin-left: 8px;
-  }
-
-  .logo-img {
-    height: 40px;
-  }
-
-  .man-logo-img,
-  .bell-logo-img {
-    width: 20px;
-    height: 20px;
-  }
-
-  .page-title {
-    font-size: 1.8rem;
-  }
-
-  .secure-container {
-    padding: 0.8rem;
-  }
-
-  .cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .card {
-    flex: 1 1 90%;
-    max-width: 90%;
-    min-width: 250px;
-  }
-
-  footer {
-    font-size: 12px;
-  }
-
-  .terminate-btn {
-    width: 90%;
-    padding: 10px;
-    font-size: 13px;
-  }
-
-  .setting-card {
-    padding: 6px;
-  }
-
-  .form-fields input,
-  .form-fields textarea {
-    padding: 12px;
-    font-size: 14px;
-  }
-
-  .form-fields button {
-    padding: 12px;
-    font-size: 14px;
-  }
-
-  .upgrade {
-    font-size: 13px;
-    padding: 8px 16px;
-  }
-
-  .tags {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .form-section {
-    margin-top: 20px;
-  }
-
-  .form-fields {
-    gap: 15px;
-  }
-} */

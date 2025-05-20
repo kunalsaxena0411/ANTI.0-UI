@@ -1,4 +1,4 @@
-//sidebar toggle
+// //sidebar toggle
 document.addEventListener('DOMContentLoaded', () => {
   const body = document.querySelector("body");
   const sidebar = body.querySelector(".sidebar");
@@ -17,32 +17,32 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Handle sidebar toggle
-  if (toggle) {
-    toggle.addEventListener("click", () => {
-      const isClosed = sidebar.classList.contains("close");
+  // if (toggle) {
+  //   toggle.addEventListener("click", () => {
+  //     const isClosed = sidebar.classList.contains("close");
 
-      if (isClosed) {
-        sidebar.classList.remove("close");
-        sidebar.classList.add("open");
-        toggle.classList.add("close"); // Show × when open
-      } else {
-        sidebar.classList.add("close");
-        sidebar.classList.remove("open");
-        toggle.classList.remove("close"); // Show ≡ when closed
-      }
+  //     if (isClosed) {
+  //       sidebar.classList.remove("close");
+  //       sidebar.classList.add("open");
+  //       toggle.classList.add("close"); // Show × when open
+  //     } else {
+  //       sidebar.classList.add("close");
+  //       sidebar.classList.remove("open");
+  //       toggle.classList.remove("close"); // Show ≡ when closed
+  //     }
 
-      // Save sidebar state to localStorage
-      localStorage.setItem("sidebarClosed", !isClosed);
-      
-    });
-  }
-  document.addEventListener("DOMContentLoaded", () => {
-    const isClosed = localStorage.getItem("sidebarClosed") === "true";
-    if (isClosed) {
-      sidebar.classList.add("close");
-      toggle.classList.add("close");
-    }
-  });
+  //     // Save sidebar state to localStorage
+  //     localStorage.setItem("sidebarClosed", !isClosed);     
+  //   });
+  // }
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   const isClosed = localStorage.getItem("sidebarClosed") === "true";
+  //   if (isClosed) {
+  //     sidebar.classList.add("close");
+  //     toggle.classList.add("close");
+  //   }
+  // });
+
   // Sidebar item handling
   const sidebarItems = document.querySelectorAll('.sidebar li');
 
