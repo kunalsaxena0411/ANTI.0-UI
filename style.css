@@ -8,7 +8,7 @@
 :root{
   /* colors */
   --body-color: #dce3f6;
-  --sidebar-color: #d3d3d3;
+  --sidebar-color: grey;
   --primary-color: black;
   --primary-color-light: #F6F5FF;
   --toggle-color: #DDD;
@@ -111,7 +111,7 @@ body {
   height: 100%;
   width: 80px; 
   padding: 40px 10px;
-  background: var(--sidebar-color);
+  background: black;
   transition: var(--tran-05);
   z-index: 1000;
 }
@@ -148,7 +148,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: black;
+  color: white;
   transition: var(--tran-02);
 }
 
